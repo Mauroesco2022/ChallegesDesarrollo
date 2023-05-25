@@ -10,7 +10,7 @@ router.post('/new',
 [
     check('name','el nombre es obligatorio').not().isEmpty(),
     check('email', 'el email es obligatorio').not().isEmpty(),
-    check('password', ).isLenght({min: 6}),
+    check('password', ).isLength({min: 6}),
     validarcampos
 ],
 crearUsuario
