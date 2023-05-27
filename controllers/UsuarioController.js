@@ -17,3 +17,6 @@ const listarUsuarios = async (req, res = express.request) =>{
         })
     }
 }
+module.exports = {
+    listarUsuarios
+}

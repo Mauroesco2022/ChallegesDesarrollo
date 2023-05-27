@@ -12,9 +12,9 @@ app.use( express.static('public'))
 app.use(express.json())
 
 app.use('/api/auth', require('./routes/auth'))
-app.use('/api/task', require('./routes/task'))
+app.use('/api/tarea', require('./routes/tarea'))
 
 
 app.listen( process.env.PORT, () =>{
-    console.log('Servidor corriendo en puerto', process.env.PORT)
+    console.log('Servidor funcionando en puerto', process.env.PORT)
 } )

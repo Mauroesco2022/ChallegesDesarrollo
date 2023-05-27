@@ -1,8 +1,8 @@
 const express = require('express');
-const Task = require('../models/TaskScheme');
+const Tarea = require('../models/TareaScheme');
 
-const crearTask = async (req, res = express.request ) => {
-    const task = new Task( req.body);
+const crearTarea = async (req, res = express.request ) => {
+    const task = new Tarea( req.body);
 
     try{
         task.user = req.uid;
@@ -20,7 +20,7 @@ const crearTask = async (req, res = express.request ) => {
     }
 
 }
-const listarTask = async (req, res = express.request) => {
+const listarTarea = async (req, res = express.request) => {
     const tasks = await Task.find().populate('user', 'name');
     try{
         
@@ -40,11 +40,11 @@ const listarTask = async (req, res = express.request) => {
 
 }
 
-const actualizarTask = async (req, res = express.request) => {
+const actualizarTarea = async (req, res = express.request) => {
     try{
         const {id} = req.params;
-        const task = await modelTask.findById(id).populate("user", "_id");
-        if (!task){
+        const tarea = await modelTask.findById(id).populate("user", "_id");
+        if (!tarea){
             return res.status(404).json({
                 ok : false,
                 msg: `No existe una tarea con el id ${id}`,
@@ -58,17 +58,17 @@ const actualizarTask = async (req, res = express.request) => {
             });
         }
         const { title } = req.body;
-        const newTask = await modelTask.findByIdAndUpdate(id, {title}, {new: true});
+        const newTarea = await modelTask.findByIdAndUpdate(id, {title}, {new: true});
 
         return res.status(200).json({
             ok:true,
-            newTask,
+            newTarea,
         });
     } catch(error) {
         console.log(error);
         res.status(500).json({
             ok: false,
-            task: "Internal error",
+            tarea: "Internal error",
         });
 
     }
@@ -76,14 +76,11 @@ const actualizarTask = async (req, res = express.request) => {
 
 };
 
-const eliminarTask = (req, res = express.request) => {
+const eliminarTarea = (req, res = express.request) => {
 
 
 }
 
 module.exports = {
-    crearTask,
-    listarTask, 
-    actualizarTask,
-    eliminarTask
+    crearTarea,listarTarea, actualizarTarea,eliminarTarea
 }

@@ -25,4 +25,4 @@ TaskScheme.method('toJSON', function() {
     return object;
 })
 
-module.exports = model('Task', TaskScheme)
+module.exports = model('Tarea', TaskScheme)
